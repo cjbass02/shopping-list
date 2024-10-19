@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shoppinglistapp
+  labels:
+    app: shoppinglistapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shoppinglistapp
+  # pod spec begins here
+  template:
+    metadata:
+      labels:
+        app: shoppinglistapp
+    spec:
+      containers:
+        - name: shoppinglistapp
+          image: registry.digitalocean.com/shopping-list/shopping-list
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8888
